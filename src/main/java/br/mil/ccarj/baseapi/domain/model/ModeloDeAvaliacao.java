@@ -1,5 +1,6 @@
 package br.mil.ccarj.baseapi.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -36,4 +37,9 @@ public class ModeloDeAvaliacao {
 
     @OneToMany(mappedBy = "modeloDeAvaliacao")
     private List<Periodo> periodos;
+//
+//    @JsonIgnore
+//    @OneToOne
+//    @JoinColumn(nullable = false, name = "ID_PROCESSO", referencedColumnName = "ID_PROCESSO")
+//    private ProcessoAvaliativo processoAvaliativo;
 }

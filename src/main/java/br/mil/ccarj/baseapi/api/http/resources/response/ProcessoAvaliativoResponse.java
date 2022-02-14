@@ -1,6 +1,6 @@
 package br.mil.ccarj.baseapi.api.http.resources.response;
 
-import br.mil.ccarj.baseapi.domain.model.TipoDeProva;
+import br.mil.ccarj.baseapi.domain.model.ModeloDeAvaliacao;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PeriodoResponse {
+public class ProcessoAvaliativoResponse {
 
     @ApiModelProperty(value = "Id")
     private Long id;
@@ -21,6 +21,7 @@ public class PeriodoResponse {
     @ApiModelProperty(value = "Nome")
     private String nome;
 
-    @ApiModelProperty(value = "Periodos")
-    private List<TipoDeProva> tiposDeProvas;
+//    @ApiModelProperty(value = "ModeloDeAvaliacao")
+//    private List<ModeloDeAvaliacao> modelosDeAvalicao;
+
 }
