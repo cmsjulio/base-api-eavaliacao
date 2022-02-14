@@ -41,7 +41,7 @@ public class ModeloDeAvaliacao {
     // NEW - 14/FEV/2022
     @JsonIgnore
     @OneToOne
-    @JoinColumn(name = "ID_PROCESSO_AVALIATIVO")
+    @JoinColumn(name = "ID_PROCESSO")
     private ProcessoAvaliativo processoAvaliativo;
 
     public ProcessoAvaliativo getProcessoAvaliativo(){ return processoAvaliativo; }

@@ -7,3 +7,6 @@ http://localhost:8085/base-api/swagger-ui.html
 ## Objetos: Escola, Disciplina, Modelo de Avaliação, Período e Tipo de Prova.
 
 ## Precisa fazer: Discente e Turma, com o respectivo mapeamento.
+
+## Processo Avaliativo mapeado em OneToOne com Modelo de Avaliação.
+

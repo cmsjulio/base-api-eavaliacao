@@ -5,7 +5,6 @@ import br.mil.ccarj.baseapi.api.http.resources.response.ProcessoAvaliativoRespon
 import br.mil.ccarj.baseapi.domain.model.ModeloDeAvaliacao;
 import br.mil.ccarj.baseapi.domain.model.ProcessoAvaliativo;
 import br.mil.ccarj.baseapi.domain.service.ModeloDeAvaliacaoService;
-import br.mil.ccarj.baseapi.domain.service.ModeloDeAvaliacaoServiceImpl;
 import br.mil.ccarj.baseapi.domain.service.ProcessoAvaliativoService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -59,9 +58,9 @@ public class ProcessoAvaliativoController extends BaseController{
     @ResponseBody
     public ResponseEntity<?> create (@RequestBody @Valid ProcessoAvaliativoRequest processoAvaliativoRequest) {
         ModeloDeAvaliacao modeloDeAvaliacao = modeloDeAvaliacaoService.findById(processoAvaliativoRequest.getModeloDeAvaliacao().getId());
+        processoAvaliativoRequest.setModeloDeAvaliacao(modeloDeAvaliacao);
         ProcessoAvaliativo request = modelMapper.map(processoAvaliativoRequest, ProcessoAvaliativo.class);
         ProcessoAvaliativo created = service.create(request);
-        created.setModeloDeAvaliacao(modeloDeAvaliacao);
         ProcessoAvaliativoResponse response = modelMapper.map(created, ProcessoAvaliativoResponse.class);
         return respondCreated(response);
     }

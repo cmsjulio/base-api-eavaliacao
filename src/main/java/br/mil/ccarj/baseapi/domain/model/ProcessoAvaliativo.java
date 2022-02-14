@@ -1,5 +1,6 @@
 package br.mil.ccarj.baseapi.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -29,6 +30,7 @@ public class ProcessoAvaliativo {
     private String nome;
 
     // NEW - 14/FEV/2022
+
     @OneToOne(mappedBy = "processoAvaliativo")
     private ModeloDeAvaliacao modeloDeAvaliacao;
 
