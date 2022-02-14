@@ -21,7 +21,8 @@ public class ProcessoAvaliativoResponse {
     @ApiModelProperty(value = "Nome")
     private String nome;
 
-//    @ApiModelProperty(value = "ModeloDeAvaliacao")
-//    private List<ModeloDeAvaliacao> modelosDeAvalicao;
+    // NEW - 14/FEV/2022
+    @ApiModelProperty(value = "Modelo De Avaliacao")
+    private ModeloDeAvaliacaoResponse modeloDeAvalicao;
 
 }

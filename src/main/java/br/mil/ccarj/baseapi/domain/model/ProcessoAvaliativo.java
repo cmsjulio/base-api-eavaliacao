@@ -28,6 +28,12 @@ public class ProcessoAvaliativo {
     @Column(name = "NM_PROCESSO_AVALIATIVO", nullable = false)
     private String nome;
 
-//    @OneToOne(mappedBy = "processoAvaliativo")
-//    private List<ModeloDeAvaliacao> modeloDeAvaliacoes;
+    // NEW - 14/FEV/2022
+    @OneToOne(mappedBy = "processoAvaliativo")
+    private ModeloDeAvaliacao modeloDeAvaliacao;
+
+    public ModeloDeAvaliacao getModeloDeAvaliacao(){
+        return modeloDeAvaliacao;
+    }
+
 }

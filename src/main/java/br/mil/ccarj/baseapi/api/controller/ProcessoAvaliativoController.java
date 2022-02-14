@@ -1,9 +1,11 @@
 package br.mil.ccarj.baseapi.api.controller;
 
 import br.mil.ccarj.baseapi.api.http.resources.request.ProcessoAvaliativoRequest;
-import br.mil.ccarj.baseapi.api.http.resources.response.ModeloDeAvaliacaoResponse;
 import br.mil.ccarj.baseapi.api.http.resources.response.ProcessoAvaliativoResponse;
+import br.mil.ccarj.baseapi.domain.model.ModeloDeAvaliacao;
 import br.mil.ccarj.baseapi.domain.model.ProcessoAvaliativo;
+import br.mil.ccarj.baseapi.domain.service.ModeloDeAvaliacaoService;
+import br.mil.ccarj.baseapi.domain.service.ModeloDeAvaliacaoServiceImpl;
 import br.mil.ccarj.baseapi.domain.service.ProcessoAvaliativoService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -26,10 +28,12 @@ public class ProcessoAvaliativoController extends BaseController{
 
     private final ProcessoAvaliativoService service;
     private final ModelMapper modelMapper;
+    private final ModeloDeAvaliacaoService modeloDeAvaliacaoService;
 
-    public ProcessoAvaliativoController (ProcessoAvaliativoService service, ModelMapper modelMapper){
+    public ProcessoAvaliativoController(ProcessoAvaliativoService service, ModelMapper modelMapper, ModeloDeAvaliacaoService modeloDeAvaliacaoService){
         this.service = service;
         this.modelMapper = modelMapper;
+        this.modeloDeAvaliacaoService = modeloDeAvaliacaoService;
     }
 
     @ApiOperation(value = "Buscar Processo Avaliativo por ID", nickname = "getProcessoAvaliativoById", notes = "Retorna um Processo Avaliativo", response = ProcessoAvaliativoResponse.class)
@@ -54,8 +58,10 @@ public class ProcessoAvaliativoController extends BaseController{
     @PostMapping
     @ResponseBody
     public ResponseEntity<?> create (@RequestBody @Valid ProcessoAvaliativoRequest processoAvaliativoRequest) {
+        ModeloDeAvaliacao modeloDeAvaliacao = modeloDeAvaliacaoService.findById(processoAvaliativoRequest.getModeloDeAvaliacao().getId());
         ProcessoAvaliativo request = modelMapper.map(processoAvaliativoRequest, ProcessoAvaliativo.class);
         ProcessoAvaliativo created = service.create(request);
+        created.setModeloDeAvaliacao(modeloDeAvaliacao);
         ProcessoAvaliativoResponse response = modelMapper.map(created, ProcessoAvaliativoResponse.class);
         return respondCreated(response);
     }

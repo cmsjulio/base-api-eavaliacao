@@ -22,5 +22,5 @@ public class PeriodoResponse {
     private String nome;
 
     @ApiModelProperty(value = "Periodos")
-    private List<TipoDeProva> tiposDeProvas;
+    private List<TipoDeProvaResponse> tiposDeProvas;
 }

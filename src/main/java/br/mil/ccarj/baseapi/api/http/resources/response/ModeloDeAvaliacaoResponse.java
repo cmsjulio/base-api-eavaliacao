@@ -29,4 +29,8 @@ public class ModeloDeAvaliacaoResponse {
 
     @ApiModelProperty(value = "Periodos")
     private List<Periodo> periodos;
+
+//    //NEW - 14/FEV/2022
+//    @ApiModelProperty(value = "Processo Avaliativo")
+//    private ProcessoAvaliativoResponse processoAvaliativo;
 }
