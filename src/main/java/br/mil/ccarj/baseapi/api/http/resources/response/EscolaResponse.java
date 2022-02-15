@@ -1,6 +1,9 @@
 package br.mil.ccarj.baseapi.api.http.resources.response;
 
+import br.mil.ccarj.baseapi.domain.model.Disciplina;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,4 +23,6 @@ public class EscolaResponse {
 
     @ApiModelProperty(value = "Sigla")
     private String sigla;
+
+
 }

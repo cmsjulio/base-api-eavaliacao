@@ -1,5 +1,6 @@
 package br.mil.ccarj.baseapi.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -29,5 +30,8 @@ public class Escola extends BaseModel{
 
     @Column(name = "NM_ESCOLA", nullable = false)
     private String nome;
+
+    @OneToOne(mappedBy = "escola")
+    private Disciplina disciplina;
 
 }
