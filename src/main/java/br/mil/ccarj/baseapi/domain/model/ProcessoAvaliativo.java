@@ -34,8 +34,4 @@ public class ProcessoAvaliativo {
     @OneToOne(mappedBy = "processoAvaliativo")
     private ModeloDeAvaliacao modeloDeAvaliacao;
 
-    public ModeloDeAvaliacao getModeloDeAvaliacao(){
-        return modeloDeAvaliacao;
-    }
-
 }

@@ -23,40 +23,40 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/processoAvaliativo")
-public class ProcessoAvaliativoController extends BaseController{
+public class ProcessoAvaliativoController extends BaseController {
 
     private final ProcessoAvaliativoService service;
     private final ModelMapper modelMapper;
     private final ModeloDeAvaliacaoService modeloDeAvaliacaoService;
 
-    public ProcessoAvaliativoController(ProcessoAvaliativoService service, ModelMapper modelMapper, ModeloDeAvaliacaoService modeloDeAvaliacaoService){
+    public ProcessoAvaliativoController(ProcessoAvaliativoService service, ModelMapper modelMapper, ModeloDeAvaliacaoService modeloDeAvaliacaoService) {
         this.service = service;
         this.modelMapper = modelMapper;
         this.modeloDeAvaliacaoService = modeloDeAvaliacaoService;
     }
 
     @ApiOperation(value = "Buscar Processo Avaliativo por ID", nickname = "getProcessoAvaliativoById", notes = "Retorna um Processo Avaliativo", response = ProcessoAvaliativoResponse.class)
-    @ApiResponses(value ={
+    @ApiResponses(value = {
             @ApiResponse(code = 200, message = "successful operation", response = ProcessoAvaliativoResponse.class),
             @ApiResponse(code = 400, message = "Bad Request"),
             @ApiResponse(code = 404, message = "Processo Avaliativo não encontrado.")})
 
     @GetMapping(value = "/{id}")
     @ResponseBody
-    public ResponseEntity<?> findById(@PathVariable(name = "id") Long id){
+    public ResponseEntity<?> findById(@PathVariable(name = "id") Long id) {
         final ProcessoAvaliativo processoAvaliativo = service.findById(id);
         ProcessoAvaliativoResponse response = modelMapper.map(processoAvaliativo, ProcessoAvaliativoResponse.class);
         return respondOk(response);
     }
 
     @ApiOperation(value = "Criar novo Processo Avaliativo.", nickname = "addProcessoAvaliativo", notes = "Criar Processo Avaliativo")
-    @ApiResponses(value ={
+    @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Created."),
             @ApiResponse(code = 400, message = "Bad Request.")})
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity<?> create (@RequestBody @Valid ProcessoAvaliativoRequest processoAvaliativoRequest) {
+    public ResponseEntity<?> create(@RequestBody @Valid ProcessoAvaliativoRequest processoAvaliativoRequest) {
         ModeloDeAvaliacao modeloDeAvaliacao = modeloDeAvaliacaoService.findById(processoAvaliativoRequest.getModeloDeAvaliacao().getId());
         processoAvaliativoRequest.setModeloDeAvaliacao(modeloDeAvaliacao);
         ProcessoAvaliativo request = modelMapper.map(processoAvaliativoRequest, ProcessoAvaliativo.class);
@@ -89,17 +89,19 @@ public class ProcessoAvaliativoController extends BaseController{
 
     @DeleteMapping(value = "/{id}")
     @ResponseBody
-    public void delete(@PathVariable(name = "id") Long id) {service.delete(id);}
+    public void delete(@PathVariable(name = "id") Long id) {
+        service.delete(id);
+    }
 
     @ApiOperation(value = "Buscar Processo Avaliativo.", nickname = "findAll", notes = "Parâmetros múltiplos podem ser fornecidos.", response = ProcessoAvaliativo.class, responseContainer = "List")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "successful operation", response = ProcessoAvaliativo.class, responseContainer = "List"),
-            @ApiResponse(code =400, message = "Bad Request")
+            @ApiResponse(code = 400, message = "Bad Request")
     })
 
     @GetMapping
     @ResponseBody
-    public ResponseEntity<?> findAll(Pageable pageable){
+    public ResponseEntity<?> findAll(Pageable pageable) {
         Page<ProcessoAvaliativo> processoAvaliativoPage = service.findAll(pageable);
         List<ProcessoAvaliativoResponse> content = processoAvaliativoPage.stream()
                 .map(item -> modelMapper.map(item, ProcessoAvaliativoResponse.class))
@@ -108,37 +110,5 @@ public class ProcessoAvaliativoController extends BaseController{
         return respondOk(processoAvaliativoResponses);
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

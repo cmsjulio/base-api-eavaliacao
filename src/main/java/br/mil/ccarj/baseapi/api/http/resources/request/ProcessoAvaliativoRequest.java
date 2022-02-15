@@ -17,6 +17,6 @@ public class ProcessoAvaliativoRequest {
     @ApiModelProperty(value = "Nome")
     private String nome;
 
-    @ApiModelProperty(value = "ModeloDeAvaliação")
+    @ApiModelProperty(value = "Modelo de Avaliação")
     private ModeloDeAvaliacao modeloDeAvaliacao;
 }

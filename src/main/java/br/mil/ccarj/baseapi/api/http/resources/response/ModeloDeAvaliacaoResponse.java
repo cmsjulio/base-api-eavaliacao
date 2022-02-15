@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class ModeloDeAvaliacaoResponse {
 
-    @ApiModelProperty(value = "Nome")
+    @ApiModelProperty(value = "Id")
     private Long id;
 
     @ApiModelProperty(value = "Nome")
@@ -30,7 +30,7 @@ public class ModeloDeAvaliacaoResponse {
     @ApiModelProperty(value = "Periodos")
     private List<Periodo> periodos;
 
-//    //NEW - 14/FEV/2022
-//    @ApiModelProperty(value = "Processo Avaliativo")
-//    private ProcessoAvaliativoResponse processoAvaliativo;
+    //NEW - 14/FEV/2022
+    @ApiModelProperty(value = "Processo Avaliativo")
+    private ProcessoAvaliativoResponse processoAvaliativo;
 }

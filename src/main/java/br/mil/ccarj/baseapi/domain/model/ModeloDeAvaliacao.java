@@ -38,12 +38,10 @@ public class ModeloDeAvaliacao {
     @OneToMany(mappedBy = "modeloDeAvaliacao")
     private List<Periodo> periodos;
 
-    // NEW - 14/FEV/2022
-    @JsonIgnore
+
     @OneToOne
     @JoinColumn(name = "ID_PROCESSO")
     private ProcessoAvaliativo processoAvaliativo;
 
-    public ProcessoAvaliativo getProcessoAvaliativo(){ return processoAvaliativo; }
 
 }
