@@ -57,6 +57,8 @@ public class DisciplinaController extends BaseController {
     public ResponseEntity<?> create(@RequestBody @Valid DisciplinaRequest disciplinaRequest) {
 
         // CONTINUAR DAQUI
+        Escola escola = escolaService.findById(disciplinaRequest.getEscola().getId());
+        disciplinaRequest.setEscola(escola);
         Disciplina request = modelMapper.map(disciplinaRequest, Disciplina.class);
         Disciplina created = disciplinaService.create(request);
         DisciplinaResponse disciplinaResponse = modelMapper.map(created, DisciplinaResponse.class);
