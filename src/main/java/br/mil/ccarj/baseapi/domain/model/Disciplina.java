@@ -32,7 +32,7 @@ public class Disciplina extends BaseModel{
     private String nome;
 
     @JsonIgnore
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "escola_id")
     private Escola escola;
 

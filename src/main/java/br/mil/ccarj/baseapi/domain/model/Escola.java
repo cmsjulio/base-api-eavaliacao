@@ -9,6 +9,7 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "T_ESCOLA")
@@ -31,7 +32,7 @@ public class Escola extends BaseModel{
     @Column(name = "NM_ESCOLA", nullable = false)
     private String nome;
 
-    @OneToOne(mappedBy = "escola")
-    private Disciplina disciplina;
+    @OneToMany(mappedBy = "escola")
+    private List<Disciplina> disciplinas;
 
 }

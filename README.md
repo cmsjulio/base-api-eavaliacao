@@ -8,5 +8,5 @@ http://localhost:8085/base-api/swagger-ui.html
 
 ## Precisa fazer: Discente e Turma, com o respectivo mapeamento.
 
-## Processo Avaliativo mapeado em OneToOne com Modelo de Avaliação.
+## Resolver DisciplinaController e depois fazer o restante na mão.
 
